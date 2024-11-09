@@ -14,6 +14,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CallbackTest {
     private WebDriver driver;
@@ -158,5 +159,15 @@ class CallbackTest {
         String expected = "Телефон указан неверно. Должно быть 11 цифр, например, +79012345678.";
         String actual = driver.findElement(By.cssSelector("[data-test-id = phone].input_invalid .input__sub")).getText().trim();
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void test12() {
+        driver.findElement(By.cssSelector("[data-test-id = name] input")).sendKeys("Смирнов Иван");
+        driver.findElement(By.cssSelector("[data-test-id = phone] input")).sendKeys("+79001178141");
+        driver.findElement(By.className("button")).click();
+        driver.findElement(By.className("button")).click();
+        boolean actual = driver.findElement(By.cssSelector("[data-test-id = agreement].input_invalid .checkbox__text")).isDisplayed();
+        assertTrue(actual);
     }
 }
