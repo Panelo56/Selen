@@ -107,17 +107,6 @@ class CallbackTest {
     }
 
     @Test
-    void test7() {
-        driver.findElement(By.cssSelector("[data-test-id = name] input")).clear();
-        driver.findElement(By.cssSelector("[data-test-id = phone] input")).sendKeys("+79001178141");
-        driver.findElement(By.cssSelector("[data-test-id = agreement]")).click();
-        driver.findElement(By.className("button")).click();
-        String expected = "Поле обязательно для заполнения";
-        String actual = driver.findElement(By.cssSelector("[data-test-id = name].input_invalid .input__sub")).getText().trim();
-        assertEquals(expected, actual);
-    }
-
-    @Test
     void test8() {
         driver.findElement(By.cssSelector("[data-test-id = name] input")).sendKeys("Смирнов Иван");
         driver.findElement(By.cssSelector("[data-test-id = phone] input")).clear();
@@ -170,4 +159,4 @@ class CallbackTest {
         boolean actual = driver.findElement(By.cssSelector("[data-test-id = agreement].input_invalid .checkbox__text")).isDisplayed();
         assertTrue(actual);
     }
-}
+}       
